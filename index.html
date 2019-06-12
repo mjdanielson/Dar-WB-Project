@@ -69,48 +69,6 @@ zoom: 9,
 center: [39.274749755859375,-6.814625652260001]
 });
  
-map.on('load', function () {
-map.addSource('Bus Stops', {
-type: 'vector',
-url: 'mapbox://mjdanielson.5k8rr58o'
-});
-map.addLayer({
-'id': 'Bus Stops',
-'type': 'circle',
-'layout': {
-'visibility': 'visible'
-}
-});
-
- 
-map.addSource('OD Matrix Points', {
-type: 'vector',
-url: 'mapbox://mjdanielson.aerkwy9k'
-});
-map.addLayer({
-'id': 'OD Matrix Points',
-'type': 'circle',
-'layout': {
-'visibility': 'visible'
-}
-});
-});
-
-map.on('load', function () {
-map.addSource('Survey Points', {
-type: 'vector',
-url: 'mapbox://mjdanielson.aah1xl6l'
-});
-map.addLayer({
-'id': 'Survey Points',
-'type': 'circle',
-'layout': {
-'visibility': 'visible'
-}
-});
-});
-
- 
 var toggleableLayerIds = [ 'OD Matrix Points', 'Bus Stops', 'Survey Points' ];
  
 for (var i = 0; i < toggleableLayerIds.length; i++) {
@@ -128,7 +86,7 @@ e.stopPropagation();
  
 var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
  
-if (visibility === 'visible') {
+if (visibility === 'visible' || visibility === undefined) {
 map.setLayoutProperty(clickedLayer, 'visibility', 'none');
 this.className = '';
 } else {
